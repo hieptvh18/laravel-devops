@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-demo
+  labels:
+    app: laravel-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-demo
+  template:
+    metadata:
+      labels:
+        app: laravel-demo
+    spec:
+      containers:
+        - name: laravel
+          image: hieptvh18/laravel-demo:latest
+          ports:
+            - containerPort: 9000
