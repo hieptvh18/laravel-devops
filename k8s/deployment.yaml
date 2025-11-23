@@ -16,6 +16,36 @@ spec:
     spec:
       containers:
         - name: laravel
-          image: hieptvh18/laravel-demo:18
+          image: hieptvh18/laravel-demo:latest
           ports:
-            - containerPort: 9000
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: APP_ENV
+              value: "production"
+            - name: APP_DEBUG
+              value: "false"
+            - name: LOG_CHANNEL
+              value: "stderr"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

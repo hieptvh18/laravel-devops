@@ -2,9 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: laravel-demo-service
+  labels:
+    app: laravel-demo
 spec:
   selector:
     app: laravel-demo
   ports:
-    - port: 80
-      targetPort: 9000
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
