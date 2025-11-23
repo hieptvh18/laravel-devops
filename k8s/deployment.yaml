@@ -33,11 +33,19 @@ spec:
               mountPath: /var/www/html/storage
             - name: cache
               mountPath: /var/www/html/bootstrap/cache
+          startupProbe:
+            httpGet:
+              path: /up
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 30
           livenessProbe:
             httpGet:
               path: /up
               port: 80
-            initialDelaySeconds: 60
+            initialDelaySeconds: 0
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
@@ -45,7 +53,7 @@ spec:
             httpGet:
               path: /up
               port: 80
-            initialDelaySeconds: 30
+            initialDelaySeconds: 0
             periodSeconds: 5
             timeoutSeconds: 3
             failureThreshold: 3
