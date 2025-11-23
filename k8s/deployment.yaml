@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: laravel
-          image: hieptvh18/laravel-demo:16
+          image: hieptvh18/laravel-demo:17
           ports:
             - containerPort: 9000
