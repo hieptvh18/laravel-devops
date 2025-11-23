@@ -7,4 +7,4 @@ spec:
     app: laravel-demo
   ports:
     - port: 80
-      targetPort: 8000
+      targetPort: 9000
